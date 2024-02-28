@@ -21,7 +21,6 @@ jobs:
         uses: asdf-vm/actions/install@v3
 
       - name: Build (skipping test)
-        working-directory: code
         run: gradle build -x test
         env:
           # disable default JVM in container
@@ -38,7 +37,6 @@ jobs:
         uses: asdf-vm/actions/install@v3
 
       - name: Build & Test
-        working-directory: code
         run: gradle build
         env:
           # disable default JVM in container
