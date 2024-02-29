@@ -7,10 +7,23 @@ open class Alarm {
         private const val HIGH_PRESSURE_THRESHOLD = 21.0
     }
 
-    private var sensor = RandomSensor()
+    private val sensor: Sensor
 
     var isAlarmOn = false
         private set
+
+    /**
+     * We maintain constructor for backward compatibility
+     *
+     * @deprecated Use constructor applying inversion dependencies
+     */
+    constructor() {
+        sensor = RandomSensor()
+    }
+
+    constructor(sensor: Sensor) {
+        this.sensor = sensor
+    }
 
     fun check() {
         val psiPressureValue = popNextPressurePsiValue()
