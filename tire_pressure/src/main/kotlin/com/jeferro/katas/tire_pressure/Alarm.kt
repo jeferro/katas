@@ -7,7 +7,7 @@ open class Alarm {
         private const val HIGH_PRESSURE_THRESHOLD = 21.0
     }
 
-    private var sensor = Sensor()
+    private var sensor = RandomSensor()
 
     var isAlarmOn = false
         private set
