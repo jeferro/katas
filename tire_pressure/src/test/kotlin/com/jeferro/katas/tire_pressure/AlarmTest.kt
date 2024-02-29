@@ -11,8 +11,29 @@ import org.mockito.junit.jupiter.MockitoExtension
 class AlarmTest {
 
     @Test
-    fun foo() {
-        val alarm = Alarm()
-        assertFalse(alarm.isAlarmOn)
+    fun `should alarm when pressure is less than 16 (below the range)`() {
+        val stubAlarm = StubAlarm(16.0)
+
+        stubAlarm.check()
+
+        assertTrue(stubAlarm.isAlarmOn)
+    }
+
+    @Test
+    fun `should alarm when value is greater than 22 (above the range)`() {
+        val stubAlarm = StubAlarm(22.0)
+
+        stubAlarm.check()
+
+        assertTrue(stubAlarm.isAlarmOn)
+    }
+
+    @Test
+    fun `should not alarm when pressure is 18 (inside range)`() {
+        val stubAlarm = StubAlarm(18.0)
+
+        stubAlarm.check()
+
+        assertFalse(stubAlarm.isAlarmOn)
     }
 }
