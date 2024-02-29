@@ -1,6 +1,6 @@
 package com.jeferro.katas.tire_pressure
 
-class Alarm {
+open class Alarm {
 
     companion object {
         private const val LOW_PRESSURE_THRESHOLD = 17.0
@@ -13,10 +13,12 @@ class Alarm {
         private set
 
     fun check() {
-        val psiPressureValue = sensor.popNextPressurePsiValue()
+        val psiPressureValue = popNextPressurePsiValue()
 
         if (psiPressureValue < LOW_PRESSURE_THRESHOLD || HIGH_PRESSURE_THRESHOLD < psiPressureValue) {
             isAlarmOn = true
         }
     }
+
+    protected open fun popNextPressurePsiValue() = sensor.popNextPressurePsiValue()
 }
