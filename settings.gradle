@@ -1,1 +1,3 @@
 rootProject.name = 'katas-kt'
+
+include ':tire_pressure'
